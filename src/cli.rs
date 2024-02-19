@@ -16,6 +16,12 @@ pub struct Args {
     #[arg(long, default_value_t = String::from(""), verbatim_doc_comment)]
     pub in_sequences: String,
 
+    /// Input txt file containing in each line a path to a fasta or fastq [.gz] file 
+    /// containing the original sequences (eg. reads). 
+    /// The stdin is used if not provided
+    #[arg(long, default_value_t = String::from(""), verbatim_doc_comment)]
+    pub in_filelist: String,
+
     /// Input fasta file containing the original kmers
     #[arg(long)]
     pub in_kmers: String,
@@ -24,7 +30,13 @@ pub struct Args {
     /// It will be automatically in fasta or fastq format depending on the input file.
     /// If not provided, only the in_kmers with their count is output
     #[arg(long, default_value_t = String::from(""), verbatim_doc_comment)]
-    pub out_sequences: String, 
+    pub out_sequences: String,
+
+    /// Output txt file containing in each line a path to a fasta or fastq [.gz] file 
+    /// that will contain the related output file from the input files list 
+    /// The stdin is used if not provided
+    #[arg(long, default_value_t = String::from(""), verbatim_doc_comment)]
+    pub out_filelist: String,
 
 
     /// If provided, output a text file containing the kmers that occur in the reads with their number of occurrences
